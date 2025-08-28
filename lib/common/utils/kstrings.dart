@@ -5,6 +5,7 @@ class AppText {
 
   // Navigation
   static const String kHome = 'Home';
+  static const String kGetStarted = "Let's Get Started";
   static const String kListen = 'Listen Live';
   static const String kLive = 'Live Radio';
   static const String kPodcasts = 'Podcasts';
@@ -65,8 +66,7 @@ class AppText {
       'Since Adietalk Radio offers live and on-demand content, cancellations or refunds may not apply except where legally required. Please review our policy for details.';
 
   // Welcome & Onboarding
-  static const String kWelcomeHeader =
-      'The Radio App That \nKeeps You Connected';
+  static const String kWelcomeHeader = 'The Radio That \nKeeps You Connected';
   static const String kWelcomeMessage =
       "Welcome to Adietalk Radio! Discover culture, stories, and voices across Africa and the diaspora. Tune in, listen back, and connect with your community.";
   static const String kOnboardShows =
