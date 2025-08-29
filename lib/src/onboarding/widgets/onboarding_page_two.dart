@@ -10,14 +10,14 @@ class OnboardingScreenTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: ScreenUtil().screenWidth,
       height: ScreenUtil().screenHeight,
       child: Stack(
         children: [
           Image.asset(R.ASSETS_IMAGES_WISHLIST_PNG, fit: BoxFit.cover),
           Positioned(
-            bottom: 180,
+            bottom: 200,
             left: 30,
             right: 30,
             child: Text(

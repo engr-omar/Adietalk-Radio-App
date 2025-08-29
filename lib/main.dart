@@ -1,8 +1,9 @@
 import 'package:adietalk_radio/common/utils/app_routes.dart';
 import 'package:adietalk_radio/common/utils/environment.dart';
 import 'package:adietalk_radio/common/utils/kstrings.dart';
+import 'package:adietalk_radio/src/entrypoint/controllers/bottom_tab_notifier.dart';
 import 'package:adietalk_radio/src/onboarding/controllers/onboarding_notifier.dart';
-import 'package:adietalk_radio/src/splashscreen/views/splashscreen_page.dart';
+import 'package:adietalk_radio/src/splashscreen/views/splashscreen_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,12 +13,16 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //load the correct environment
+
   await dotenv.load(fileName: Environment.fileName);
 
   await GetStorage.init();
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => OnboardingNotifier())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => OnboardingNotifier()),
+        ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -26,6 +31,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -36,10 +42,11 @@ class MyApp extends StatelessWidget {
       useInheritedMediaQuery: true,
       builder: (_, child) {
         return MaterialApp.router(
-          debugShowCheckedModeBanner: true,
+          debugShowCheckedModeBanner: false,
           title: AppText.kAppName,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
           ),
           routerConfig: router,
         );
@@ -72,7 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
       ),
       body: Center(

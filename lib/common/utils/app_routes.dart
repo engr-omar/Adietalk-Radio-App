@@ -1,6 +1,6 @@
 import 'package:adietalk_radio/src/entrypoint/views/entrypoint.dart';
 import 'package:adietalk_radio/src/onboarding/views/onboarding_screen.dart';
-import 'package:adietalk_radio/src/splashscreen/views/splashscreen_page.dart';
+import 'package:adietalk_radio/src/splashscreen/views/splashscreen_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +11,7 @@ final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
-    GoRoute(path: '/home', builder: (context, state) => const AppEntryPoint()),
+    GoRoute(path: '/home', builder: (context, state) => AppEntryPoint()),
     GoRoute(
       path: '/onboarding',
       builder: (context, state) => const OnBoardingScreen(),

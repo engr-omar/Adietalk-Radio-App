@@ -5,11 +5,8 @@ class OnboardingNotifier with ChangeNotifier {
 
   int get selectedPage => _selectedPage;
 
-  set setSelectedPage(int setSelectedPage) {}
-
-  set selectedPage(int page) {
+  set setSelectedPage(int page) {
     _selectedPage = page;
-
     notifyListeners();
   }
 }

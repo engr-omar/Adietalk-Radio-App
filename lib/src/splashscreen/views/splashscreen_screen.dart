@@ -1,6 +1,7 @@
 import 'package:adietalk_radio/common/services/storage.dart';
 import 'package:adietalk_radio/common/utils/kcolors.dart';
 import 'package:adietalk_radio/const/resource.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,10 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
   _navigator() async {
     await Future.delayed(const Duration(milliseconds: 3000), () {
       if (Storage().getBool('firstOpen') == null) {
-        // Go to the onboarding screen
+        //Go to the onboarding screen
         GoRouter.of(context).go('/onboarding');
       } else {
-        // Go to the home screen
+        //Go to home page
         GoRouter.of(context).go('/home');
       }
     });
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(R.ASSETS_IMAGES_SPLASHSCREEN_PNG),
           ),

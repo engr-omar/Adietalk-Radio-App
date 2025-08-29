@@ -10,18 +10,18 @@ class OnboardingScreenOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: ScreenUtil().screenWidth,
       height: ScreenUtil().screenHeight,
       child: Stack(
         children: [
           Image.asset(R.ASSETS_IMAGES_EXPERIENCE_PNG, fit: BoxFit.cover),
           Positioned(
-            bottom: 180,
+            bottom: 200,
             left: 30,
             right: 30,
             child: Text(
-              AppText.kWelcomeMessage,
+              AppText.kOnboardShowsMessage,
               textAlign: TextAlign.center,
               style: appStyle(11, Kolors.kGray, FontWeight.normal),
             ),
