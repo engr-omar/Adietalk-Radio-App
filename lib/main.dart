@@ -1,8 +1,12 @@
 import 'package:adietalk_radio/common/utils/app_routes.dart';
 import 'package:adietalk_radio/common/utils/environment.dart';
 import 'package:adietalk_radio/common/utils/kstrings.dart';
+import 'package:adietalk_radio/src/categories/controllers/category_notifier.dart';
 import 'package:adietalk_radio/src/entrypoint/controllers/bottom_tab_notifier.dart';
+import 'package:adietalk_radio/src/home/controllers/home_tab_notifier.dart';
 import 'package:adietalk_radio/src/onboarding/controllers/onboarding_notifier.dart';
+import 'package:adietalk_radio/src/products/controllers/colors_sizes_notifier.dart';
+import 'package:adietalk_radio/src/products/controllers/product_notifier.dart';
 import 'package:adietalk_radio/src/splashscreen/views/splashscreen_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,6 +26,10 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => OnboardingNotifier()),
         ChangeNotifierProvider(create: (_) => TabIndexNotifier()),
+        ChangeNotifierProvider(create: (_) => CategoryNotifier()),
+        ChangeNotifierProvider(create: (_) => HomeTabNotifier()),
+        ChangeNotifierProvider(create: (_) => ProductNotifier()),
+        ChangeNotifierProvider(create: (_) => ColorSizesNotifier()),
       ],
       child: const MyApp(),
     ),

@@ -21,7 +21,7 @@ class OnboardingScreenTwo extends StatelessWidget {
             left: 30,
             right: 30,
             child: Text(
-              AppText.kOnboardShowsMessage,
+              AppText.kOnboardWishListMessage,
               textAlign: TextAlign.center,
               style: appStyle(11, Kolors.kGray, FontWeight.normal),
             ),

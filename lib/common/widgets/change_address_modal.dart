@@ -20,7 +20,7 @@ Future<dynamic> changeAddressBottomSheet(BuildContext context) {
             SizedBox(height: 10.h),
             Center(
               child: ReusableText(
-                text: AppText.kNowPlaying,
+                text: AppText.kCheckoutAddress,
                 style: appStyle(16, Kolors.kPrimary, FontWeight.w500),
               ),
             ),
@@ -28,7 +28,7 @@ Future<dynamic> changeAddressBottomSheet(BuildContext context) {
             Divider(color: Kolors.kGrayLight, thickness: 0.5.h),
             SizedBox(height: 10.h),
             ReusableText(
-              text: AppText.kNowPlaying,
+              text: AppText.kCheckoutAddressText,
               style: appStyle(13, Kolors.kGray, FontWeight.w500),
             ),
             SizedBox(height: 10.h),

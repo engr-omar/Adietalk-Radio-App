@@ -1,5 +1,5 @@
-// import 'package:fashion_app/common/utils/kcolors.dart';
-// import 'package:fashion_app/common/widgets/app_style.dart';
+// import 'package:adietalk_radio/common/utils/kcolors.dart';
+// import 'package:adietalk_radio/common/widgets/app_style.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';

@@ -21,20 +21,20 @@ class CustomAppBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 3.0),
             child: ReusableText(
-              text: "",
+              text: "Adietalk",
               style: appStyle(12, Kolors.kGray, FontWeight.normal),
             ),
           ),
           SizedBox(height: 5.h),
           Row(
             children: [
-              const Icon(Ionicons.play, size: 16, color: Kolors.kPrimary),
+              const Icon(Ionicons.location, size: 16, color: Kolors.kPrimary),
               Padding(
                 padding: const EdgeInsets.only(left: 6.0),
                 child: SizedBox(
                   width: ScreenUtil().screenWidth * 0.7,
                   child: Text(
-                    "Now Streaming",
+                    "RADIO",
                     maxLines: 1,
                     style: appStyle(14, Kolors.kDark, FontWeight.w500),
                   ),
@@ -62,10 +62,7 @@ class CustomAppBar extends StatelessWidget {
                     height: 40.h,
                     width: ScreenUtil().screenWidth - 80,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 0.5,
-                        color: Kolors.kPrimaryLight,
-                      ),
+                      border: Border.all(width: 0.5, color: Kolors.kGrayLight),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Padding(
@@ -92,10 +89,10 @@ class CustomAppBar extends StatelessWidget {
                   width: 40.w,
                   decoration: BoxDecoration(
                     color: Kolors.kPrimary,
-                    borderRadius: BorderRadius.circular(9),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   child: const Icon(
-                    FontAwesome.sliders,
+                    FontAwesome.play,
                     color: Kolors.kWhite,
                     size: 20,
                   ),

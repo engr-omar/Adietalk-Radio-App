@@ -24,7 +24,7 @@ class NotificationWidget extends StatelessWidget {
         child: CircleAvatar(
           backgroundColor: Kolors.kGrayLight.withOpacity(.3),
           child: const Badge(
-            label: Text('0'),
+            label: Text('4'),
             child: Icon(Ionicons.notifications, color: Kolors.kPrimary),
           ),
         ),
