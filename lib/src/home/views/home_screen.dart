@@ -1,40 +1,57 @@
 import 'package:adietalk_radio/src/home/controllers/home_tab_notifier.dart';
+import 'package:adietalk_radio/src/home/widgets/categories_list.dart';
 import 'package:adietalk_radio/src/home/widgets/custom_app_bar.dart';
 import 'package:adietalk_radio/src/home/widgets/home_header.dart';
 import 'package:adietalk_radio/src/home/widgets/home_slider.dart';
 import 'package:adietalk_radio/src/home/widgets/home_tabs.dart';
+import 'package:adietalk_radio/src/home/widgets/shows_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late final TabController _tabController;
-
   int _currentTabIndex = 0;
 
   @override
   void initState() {
-    _tabController = TabController(length: homeTabs.length, vsync: this);
+    super.initState();
+
+    // Convert weekday (1–7) to 0–6
+    int todayIndex = DateTime.now().weekday - 1;
+
+    _tabController = TabController(
+      length: homeTabs.length,
+      vsync: this,
+      initialIndex: todayIndex,
+    );
+
+    _currentTabIndex = todayIndex;
+
+    // Sync notifier with today’s tab after build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final controller = Provider.of<HomeTabNotifier>(context, listen: false);
+      controller.setIndex(todayIndex);
+    });
 
     _tabController.addListener(_handleSelection);
-    super.initState();
   }
 
   void _handleSelection() {
-    final controller = Provider.of<HomeTabNotifier>(context, listen: false);
-
     if (_tabController.indexIsChanging) {
       setState(() {
         _currentTabIndex = _tabController.index;
       });
-      controller.setIndex(homeTabs[_currentTabIndex]);
+
+      final controller = Provider.of<HomeTabNotifier>(context, listen: false);
+      controller.setIndex(_currentTabIndex);
     }
   }
 
@@ -59,16 +76,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           const HomeSlider(),
           SizedBox(height: 15.h),
           const HomeHeader(),
-
-          // SizedBox(height: 10.h),
-          // const HomeCategoriesList(),
+          SizedBox(height: 10.h),
+          const HomeCategoriesList(),
           SizedBox(height: 15.h),
-
           HomeTabs(tabController: _tabController),
-
-          // SizedBox(height: 15.h),
-
-          // const ExploreProducts(),
+          SizedBox(height: 15.h),
+          const ExploreShows(),
           SizedBox(height: 100.h),
         ],
       ),
@@ -76,8 +89,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 }
 
+// Still keep this for Tab labels:
 List<String> homeTabs = [
-  'All',
   'Monday',
   'Tuesday',
   'Wednesday',

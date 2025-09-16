@@ -1,4 +1,12 @@
-enum QueryType { all, monday, tuesday, wednesday, thursday, friday }
+enum QueryType {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}
 
 enum WishlistToggle { retrieve, delete, add }
 

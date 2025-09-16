@@ -1,78 +1,34 @@
 import 'package:adietalk_radio/common/utils/kcolors.dart';
-import 'package:adietalk_radio/common/utils/kstrings.dart';
-import 'package:adietalk_radio/common/widgets/app_style.dart';
-import 'package:adietalk_radio/common/widgets/custom_button.dart';
-import 'package:adietalk_radio/common/widgets/reusable_text.dart';
-import 'package:adietalk_radio/const/resource.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Kolors.kWhite,
-        width: ScreenUtil().screenWidth,
-        height: ScreenUtil().screenHeight,
-        child: Column(
-          children: [
-            SizedBox(height: 100.h),
-            Image.asset(R.ASSETS_IMAGES_GETSTARTED_PNG),
-            SizedBox(height: 30.h),
-            Text(
-              AppText.kWelcomeHeader,
-              textAlign: TextAlign.center,
-              style: appStyle(24, Kolors.kPrimary, FontWeight.bold),
-            ),
-            SizedBox(height: 20.h),
-            SizedBox(
-              width: ScreenUtil().screenWidth - 100,
-              child: Text(
-                AppText.kWelcomeMessage,
-                textAlign: TextAlign.center,
-                style: appStyle(11, Kolors.kGray, FontWeight.normal),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            CustomButton(
-              text: AppText.kGetStarted,
-              btnHieght: 35,
-              radius: 20,
-              btnWidth: ScreenUtil().screenWidth - 100,
-              onTap: () {
-                ///TODO: uncomment the bool storage when the app is ready
-                // Storage().setBool('firstOpen', true);
-
-                context.go('/home');
-              },
-            ),
-            SizedBox(height: 20.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ReusableText(
-                  text: "Already have an account?",
-                  style: appStyle(12, Kolors.kDark, FontWeight.normal),
-                ),
-                TextButton(
-                  onPressed: () {
-                    //navigate to login page
-                    context.go('/login');
-                  },
-                  child: const Text(
-                    "Sign In",
-                    style: TextStyle(fontSize: 12, color: Colors.blue),
-                  ),
-                ),
-              ],
-            ),
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset("assets/images/logo.png", height: 250),
+        const SizedBox(height: 40),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Text(
+            "Tune In, Take Control",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
+        const SizedBox(height: 16),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Text(
+            "Adietalk Radio puts you in the driver's seat of your audio experience. Discover new voices, curate your playlist, and enjoy seamless listening anytime, anywhere.",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 15, color: Kolors.kGray),
+          ),
+        ),
+      ],
     );
   }
 }

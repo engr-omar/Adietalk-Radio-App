@@ -1,0 +1,7 @@
+com.example.adietalk_radio-pngs-0 /Users/MAC/Documents/App/adietalk_radio/android/build/generated/res/pngs/debug
+com.example.adietalk_radio-resValues-1 /Users/MAC/Documents/App/adietalk_radio/android/build/generated/res/resValues/debug
+com.example.adietalk_radio-packageDebugResources-2 /Users/MAC/Documents/App/adietalk_radio/android/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.adietalk_radio-packageDebugResources-3 /Users/MAC/Documents/App/adietalk_radio/android/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.adietalk_radio-debug-4 /Users/MAC/Documents/App/adietalk_radio/android/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.adietalk_radio-debug-5 /Users/MAC/Documents/App/adietalk_radio/android/src/debug/res
+com.example.adietalk_radio-main-6 /Users/MAC/Documents/App/adietalk_radio/android/src/main/res

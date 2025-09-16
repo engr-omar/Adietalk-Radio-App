@@ -1,6 +1,5 @@
 import 'package:adietalk_radio/common/services/storage.dart';
 import 'package:adietalk_radio/common/utils/kcolors.dart';
-import 'package:adietalk_radio/const/resource.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,34 +11,54 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  double _opacity = 1.0;
+
   @override
   void initState() {
-    _navigator();
     super.initState();
+    _startAnimation();
   }
 
-  _navigator() async {
-    await Future.delayed(const Duration(milliseconds: 3000), () {
-      if (Storage().getBool('firstOpen') == null) {
-        //Go to the onboarding screen
-        GoRouter.of(context).go('/onboarding');
-      } else {
-        //Go to home page
-        GoRouter.of(context).go('/home');
-      }
+  void _startAnimation() async {
+    // Wait 2.5s, then fade out (duration 0.5s = total 3s)
+    await Future.delayed(const Duration(milliseconds: 2500));
+    setState(() {
+      _opacity = 0.0;
     });
+
+    // Wait for fade-out animation to finish, then navigate
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (Storage().getBool('firstOpen') == null) {
+      GoRouter.of(context).go('/onboarding');
+    } else {
+      GoRouter.of(context).go('/home');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Kolors.kWhite,
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(R.ASSETS_IMAGES_SPLASHSCREEN_PNG),
+      body: Center(
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 500),
+          opacity: _opacity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              /// Logo
+              Image.asset(
+                "assets/images/logo.png",
+                width: MediaQuery.of(context).size.width * 0.6,
+              ),
+              const SizedBox(height: 24),
+
+              /// Red Circular Progress Indicator
+              const CircularProgressIndicator(
+                color: Colors.red,
+                strokeWidth: 3,
+              ),
+            ],
           ),
         ),
       ),

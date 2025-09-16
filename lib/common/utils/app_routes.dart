@@ -1,8 +1,10 @@
 import 'package:adietalk_radio/src/auth/views/login_screen.dart';
+import 'package:adietalk_radio/src/categories/views/categories_screen.dart';
 import 'package:adietalk_radio/src/categories/views/category_page.dart';
 import 'package:adietalk_radio/src/entrypoint/views/entrypoint.dart';
 import 'package:adietalk_radio/src/notification/views/notification_screen.dart';
 import 'package:adietalk_radio/src/onboarding/views/onboarding_screen.dart';
+import 'package:adietalk_radio/src/player/views/radio_player.dart';
 import 'package:adietalk_radio/src/products/views/product_screen.dart';
 import 'package:adietalk_radio/src/profile/views/orders_screen.dart';
 import 'package:adietalk_radio/src/profile/views/policy_screen.dart';
@@ -44,10 +46,10 @@ final GoRouter _router = GoRouter(
     //   path: '/register',
     //   builder: (context, state) => const RegistrationPage(),
     // ),
-    // GoRoute(
-    //   path: '/categories',
-    //   builder: (context, state) => const CategoriesPage(),
-    // ),
+    GoRoute(
+      path: '/categories',
+      builder: (context, state) => const CategoriesPage(),
+    ),
     GoRoute(
       path: '/category',
       builder: (context, state) => const CategoryPage(),
@@ -71,6 +73,10 @@ final GoRouter _router = GoRouter(
     //   path: '/tracking',
     //   builder: (context, state) => const TrackOrderPage(),
     // ),
+    GoRoute(
+      path: '/player',
+      builder: (context, state) => const RadioPlayerScreen(),
+    ),
 
     // GoRoute(
     //   path: '/checkout',
@@ -90,7 +96,7 @@ final GoRouter _router = GoRouter(
       path: '/product/:id',
       builder: (BuildContext context, GoRouterState state) {
         final productId = state.pathParameters['id'];
-        return ProductPage(productId: productId.toString());
+        return ProductScreen(productId: productId.toString());
       },
     ),
   ],

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Kolors {
-  static const Color kPrimary = Color(0xFFC80000); // Red
-  static const Color kPrimaryLight = Color(0xFFFF4D4D); // Light Red
+  static const Color kPrimary = Color(0xFFD90000); // Main Red
+  static const Color kPrimaryLight = Color(0xFFFF4D4D); // Lighter Red
   static const Color kSecondaryLight = Color(
     0xFFFFE5E5,
-  ); // Very light red/white tone
-  static const Color kGray = Color(0xFF83829A); // Keep for text contrast
+  ); // Very light red/pink tone
+  static const Color kGray = Color(0xFF83829A); // Text contrast gray
   static const Color kGrayLight = Color(0xFFC1C0C8); // Light gray
   static const Color kWhite = Color(0xFFFFFFFF); // White
   static const Color kDark = Color(0xFF000000); // Black
   static const Color kOffWhite = Color(0xFFF8F8F8); // Softer white
-  static const Color kGold = Color(0xFFFFC107); // Optional accent (kept)
-  static const Color kRed = Color(0xFFC80000); // Main Red
+  static const Color kGold = Color(0xFFFFC107); // Accent gold
+  static const Color kRed = Color(0xFFD90000); // Strong Red (same as primary)
+  static const Color kGreen = Color(0xFF2E7D32); // Strong Green
 }
 
 // import 'package:flutter/material.dart';

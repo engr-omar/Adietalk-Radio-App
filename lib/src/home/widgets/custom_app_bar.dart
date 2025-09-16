@@ -1,6 +1,7 @@
 import 'package:adietalk_radio/common/utils/kcolors.dart';
 import 'package:adietalk_radio/common/widgets/app_style.dart';
 import 'package:adietalk_radio/common/widgets/reusable_text.dart';
+import 'package:adietalk_radio/src/home/widgets/live_stream_button.dart';
 import 'package:adietalk_radio/src/home/widgets/notification_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,34 +16,20 @@ class CustomAppBar extends StatelessWidget {
     return AppBar(
       elevation: 0,
       automaticallyImplyLeading: false,
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 3.0),
-            child: ReusableText(
-              text: "Adietalk",
-              style: appStyle(12, Kolors.kGray, FontWeight.normal),
+      title: GestureDetector(
+        onTap: () {
+          context.push('/player');
+        },
+        child: Row(
+          children: [
+            const Icon(Ionicons.mic, size: 20, color: Kolors.kGreen),
+            SizedBox(width: 8.w),
+            Text(
+              "Live Now",
+              style: appStyle(14, Kolors.kPrimary, FontWeight.w600),
             ),
-          ),
-          SizedBox(height: 5.h),
-          Row(
-            children: [
-              const Icon(Ionicons.location, size: 16, color: Kolors.kPrimary),
-              Padding(
-                padding: const EdgeInsets.only(left: 6.0),
-                child: SizedBox(
-                  width: ScreenUtil().screenWidth * 0.7,
-                  child: Text(
-                    "RADIO",
-                    maxLines: 1,
-                    style: appStyle(14, Kolors.kDark, FontWeight.w500),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
       actions: const [NotificationWidget()],
       bottom: PreferredSize(
@@ -62,9 +49,13 @@ class CustomAppBar extends StatelessWidget {
                     height: 40.h,
                     width: ScreenUtil().screenWidth - 80,
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.5, color: Kolors.kGrayLight),
+                      border: Border.all(
+                        width: 2,
+                        color: Kolors.kPrimaryLight.withOpacity(0.5),
+                      ),
                       borderRadius: BorderRadius.circular(12),
                     ),
+
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -72,7 +63,7 @@ class CustomAppBar extends StatelessWidget {
                           const Icon(
                             Ionicons.search,
                             size: 20,
-                            color: Kolors.kPrimaryLight,
+                            color: Kolors.kGray,
                           ),
                           SizedBox(width: 20.w),
                           ReusableText(
@@ -84,19 +75,7 @@ class CustomAppBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  height: 40.h,
-                  width: 40.w,
-                  decoration: BoxDecoration(
-                    color: Kolors.kPrimary,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: const Icon(
-                    FontAwesome.play,
-                    color: Kolors.kWhite,
-                    size: 20,
-                  ),
-                ),
+                const LiveStreamButton(),
               ],
             ),
           ),

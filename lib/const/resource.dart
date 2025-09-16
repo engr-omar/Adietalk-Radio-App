@@ -37,4 +37,7 @@ class R {
 
   /// ![preview](file:///Volumes/Transfer/Projects/adietalk/assets/images/wishlist.png)
   static const String ASSETS_IMAGES_WISHLIST_PNG = 'assets/images/wishlist.png';
+
+  /// ![preview](file:///Volumes/Transfer/Projects/adietalk/assets/images/oap1.svg)
+  static const String ASSETS_IMAGES_OAP1_PNG = 'assets/images/oap1.svg';
 }

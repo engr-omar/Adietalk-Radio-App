@@ -6,8 +6,8 @@ import 'package:adietalk_radio/common/widgets/reusable_text.dart';
 import 'package:adietalk_radio/const/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeSlider extends StatelessWidget {
   const HomeSlider({super.key});
@@ -18,13 +18,23 @@ class HomeSlider extends StatelessWidget {
       borderRadius: kRadiusAll,
       child: Stack(
         children: [
+          // ✅ Temporary Container instead of slider
+          Container(
+            height: ScreenUtil().screenHeight * 0.16,
+            width: ScreenUtil().screenWidth,
+            color: Kolors.kPrimaryLight.withOpacity(0.2),
+            child: Center(),
+          ),
+
+          // ❌ Commented out: Image slider (for future use)
+          /*
           SizedBox(
             height: ScreenUtil().screenHeight * 0.16,
             width: ScreenUtil().screenWidth,
             child: ImageSlideshow(
               indicatorColor: Kolors.kPrimaryLight,
               onPageChanged: (p) {},
-              autoPlayInterval: 50000,
+              autoPlayInterval: 5000,
               isLoop: true,
               children: List.generate(images.length, (i) {
                 return CachedNetworkImage(
@@ -36,6 +46,9 @@ class HomeSlider extends StatelessWidget {
               }),
             ),
           ),
+          */
+
+          // Overlay content
           Positioned(
             child: SizedBox(
               height: ScreenUtil().screenHeight * 0.16,
@@ -60,7 +73,7 @@ class HomeSlider extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
-                    CustomButton(text: "Live Now", btnWidth: 150.w),
+                    CustomButton(text: "Live Now", btnWidth: 120.w),
                   ],
                 ),
               ),

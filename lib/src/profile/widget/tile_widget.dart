@@ -20,8 +20,8 @@ class ProfileTileWidget extends StatelessWidget {
     return ListTile(
       visualDensity: VisualDensity.compact,
       onTap: onTap,
-      leading: Icon(leading, color: Kolors.kGray),
-      title: Text(title, style: appStyle(13, Kolors.kDark, FontWeight.normal)),
+      leading: Icon(leading, color: Kolors.kPrimary),
+      title: Text(title, style: appStyle(16, Kolors.kDark, FontWeight.normal)),
       trailing: const Icon(AntDesign.right, size: 16, color: Kolors.kDark),
     );
   }

@@ -14,9 +14,11 @@ class PolicyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const AppBackButton(),
-        title: ReusableText(
-          text: AppText.kPolicy,
-          style: appStyle(16, Kolors.kPrimary, FontWeight.bold),
+        title: Center(
+          child: ReusableText(
+            text: AppText.kPolicy,
+            style: appStyle(16, Kolors.kPrimary, FontWeight.bold),
+          ),
         ),
       ),
       body: Padding(

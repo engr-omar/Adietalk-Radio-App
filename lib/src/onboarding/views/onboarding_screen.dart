@@ -4,115 +4,109 @@ import 'package:adietalk_radio/src/onboarding/widgets/onboarding_page_one.dart';
 import 'package:adietalk_radio/src/onboarding/widgets/onboarding_page_two.dart';
 import 'package:adietalk_radio/src/onboarding/widgets/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
+import 'package:go_router/go_router.dart';
 
-class OnBoardingScreen extends StatefulWidget {
+class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
-}
-
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  late final PageController _pageController;
-
-  @override
-  void initState() {
-    _pageController = PageController(
-      initialPage: context.read<OnboardingNotifier>().selectedPage,
-    );
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            controller: _pageController,
-            onPageChanged: (page) {
-              context.read<OnboardingNotifier>().setSelectedPage = page;
-            },
-            children: const [
-              OnboardingScreenOne(),
-              OnboardingScreenTwo(),
-              WelcomeScreen(),
-            ],
-          ),
-          context.watch<OnboardingNotifier>().selectedPage == 2
-              ? const SizedBox.shrink()
-              : Positioned(
-                  bottom: 50.h,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    width: ScreenUtil().screenWidth,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        context.watch<OnboardingNotifier>().selectedPage == 0
-                            ? const SizedBox(width: 25)
-                            : GestureDetector(
-                                onTap: () {
-                                  _pageController.animateToPage(
-                                    context
-                                            .read<OnboardingNotifier>()
-                                            .selectedPage -
-                                        1,
-                                    duration: const Duration(milliseconds: 200),
-                                    curve: Curves.easeIn,
-                                  );
-                                },
-                                child: const Icon(
-                                  AntDesign.leftcircleo,
-                                  color: Kolors.kPrimary,
-                                  size: 30,
-                                ),
-                              ),
-                        SizedBox(
-                          width: ScreenUtil().screenWidth * 0.7,
-                          height: 50.h,
-                          child: PageViewDotIndicator(
-                            currentItem: context
-                                .watch<OnboardingNotifier>()
-                                .selectedPage,
-                            count: 3,
-                            unselectedColor: Colors.black26,
-                            selectedColor: Kolors.kPrimary,
-                            duration: const Duration(milliseconds: 200),
-                            onItemClicked: (index) {
-                              _pageController.animateToPage(
-                                index,
-                                duration: const Duration(milliseconds: 200),
-                                curve: Curves.easeIn,
-                              );
-                            },
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _pageController.animateToPage(
-                              context.read<OnboardingNotifier>().selectedPage +
-                                  1,
-                              duration: const Duration(milliseconds: 200),
-                              curve: Curves.easeIn,
-                            );
-                          },
-                          child: const Icon(
-                            AntDesign.rightcircleo,
-                            color: Kolors.kPrimary,
-                            size: 30,
-                          ),
-                        ),
+    final pageController = PageController();
+
+    return ChangeNotifierProvider(
+      create: (_) => OnboardingNotifier(),
+      child: Consumer<OnboardingNotifier>(
+        builder: (context, notifier, _) {
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  // Skip button
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: TextButton(
+                      onPressed: () => context.go('/home'),
+                      child: const Text(
+                        "Skip",
+                        style: TextStyle(color: Kolors.kPrimary),
+                      ),
+                    ),
+                  ),
+
+                  // PageView for screens
+                  Expanded(
+                    child: PageView(
+                      controller: pageController,
+                      onPageChanged: (index) {
+                        notifier.setSelectedPage = index;
+                      },
+                      children: const [
+                        OnboardingScreenOne(),
+                        OnboardingScreenTwo(),
+                        WelcomeScreen(),
                       ],
                     ),
                   ),
-                ),
-        ],
+
+                  const SizedBox(height: 20),
+
+                  // Page indicators
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(3, (index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        width: notifier.selectedPage == index ? 12 : 8,
+                        height: notifier.selectedPage == index ? 12 : 8,
+                        decoration: BoxDecoration(
+                          color: notifier.selectedPage == index
+                              ? Kolors.kPrimary
+                              : Colors.grey.shade400,
+                          shape: BoxShape.circle,
+                        ),
+                      );
+                    }),
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  // Button
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Kolors.kPrimary,
+                      shape: const StadiumBorder(),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 12,
+                      ),
+                    ),
+                    onPressed: () {
+                      if (notifier.selectedPage < 2) {
+                        pageController.nextPage(
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        context.go('/home');
+                      }
+                    },
+                    child: Text(
+                      notifier.selectedPage < 2 ? "Next" : "Get Started",
+                      style: TextStyle(
+                        color: Kolors.kWhite,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

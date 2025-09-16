@@ -14,15 +14,14 @@ import 'package:adietalk_radio/src/products/widgets/expandable_text.dart';
 import 'package:adietalk_radio/src/products/widgets/product_bottom_bar.dart';
 import 'package:adietalk_radio/src/products/widgets/product_sizes_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key, required this.productId});
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key, required this.productId});
 
   final String productId;
 

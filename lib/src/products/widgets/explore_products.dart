@@ -1,5 +1,4 @@
-// import 'package:adietalk_radio/common/services/storage.dart';
-// import 'package:adietalk_radio/common/widgets/login_bottom_sheet.dart';
+// import 'package:adietalk_radio/const/constants.dart';
 // import 'package:adietalk_radio/src/products/widgets/staggered_tile_widget.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +9,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     String? accessToken = Storage().getString('accessToken');
+//     // String? accessToken = Storage().getString('accessToken');
 //     return Padding(
 //       padding: EdgeInsets.symmetric(horizontal: 2.h),
 //       child: StaggeredGrid.count(
@@ -21,19 +20,20 @@
 //           final double mainAxisCellCount = (i % 2 == 0 ? 2.17 : 2.4);
 //           final product = products[i];
 //           return StaggeredGridTile.count(
-//               crossAxisCellCount: 2,
-//               mainAxisCellCount: mainAxisCellCount,
-//               child: StaggeredTileWidget(
-//                 onTap: () {
-//                   if (accessToken == null) {
-//                     loginBottomSheet(context);
-//                   } else {
-//                     //handle wishlist functionality
-//                   }
-//                 },
-//                 product: product,
-//                 i: i,
-//               ));
+//             crossAxisCellCount: 2,
+//             mainAxisCellCount: mainAxisCellCount,
+//             child: StaggeredTileWidget(
+//               onTap: () {
+//                 // if (accessToken == null) {
+//                 //   loginBottomSheet(context);
+//                 // } else {
+//                 //   //handle wishlist functionality
+//                 // }
+//               },
+//               product: product,
+//               i: i,
+//             ),
+//           );
 //         }),
 //       ),
 //     );

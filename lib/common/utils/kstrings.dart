@@ -20,12 +20,14 @@ class AppText {
       'https://firebasestorage.googleapis.com/v0/b/authenification-b4dc9.appspot.com/o/uploads%2Favatar.png?alt=media&token=7da81de9-a163-4296-86ac-3194c490ce15';
   static const String kCurrentShow = "Today's Shows";
   static const String kPolicy = 'Privacy Policy';
+  static const String kSearchResults = 'Search Results';
   static const String kCancelation = 'Cancellation Policy';
+  static const String kSearchHint = 'Search For Latest Shows';
   static const String kTerms = 'Terms & Conditions';
   static const String kHomeBtn = 'Listen Now';
   static const String kViewAll = 'See All';
   static const String kFlash = 'Live Highlights';
-  static const String kWishlist = 'Favorites';
+  static const String kWishlist = 'Shows';
   static const String kPDetails = 'Show Details';
   static const String kConfirm = 'Confirm Subscription';
   static const String kTrack = 'Track Program';

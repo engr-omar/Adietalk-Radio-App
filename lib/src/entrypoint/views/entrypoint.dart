@@ -6,16 +6,15 @@ import 'package:adietalk_radio/src/home/views/home_screen.dart';
 import 'package:adietalk_radio/src/profile/views/profile_screen.dart';
 import 'package:adietalk_radio/src/wishlist/views/wishlist_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 
 class AppEntryPoint extends StatelessWidget {
   AppEntryPoint({super.key});
 
   List<Widget> pageList = [
-    const HomePage(),
+    const HomeScreen(),
     const WishListPage(),
-    const CartPage(),
+    const PromotionsScreen(),
     const ProfilePage(),
   ];
 
@@ -71,34 +70,28 @@ class AppEntryPoint extends StatelessWidget {
                                 size: 24,
                               )
                             : const Icon(Icons.radio),
-                        label: "Wishlist",
+                        label: "Shows",
                       ),
                       BottomNavigationBarItem(
                         icon: tabIndexNotifier.index == 2
-                            ? const Badge(
-                                label: Text('9'),
-                                child: Icon(
-                                  Icons.newspaper,
-                                  color: Kolors.kPrimary,
-                                  size: 24,
-                                ),
+                            ? const Icon(
+                                Icons.newspaper,
+                                color: Kolors.kPrimary,
+                                size: 24,
                               )
-                            : const Badge(
-                                label: Text('9'),
-                                child: Icon(Icons.newspaper),
-                              ),
-                        label: "Cart",
+                            : Icon(Icons.newspaper),
+                        label: "Promotions",
                       ),
 
                       BottomNavigationBarItem(
                         icon: tabIndexNotifier.index == 3
                             ? const Icon(
-                                EvilIcons.user,
+                                Icons.settings,
                                 color: Kolors.kPrimary,
-                                size: 34,
+                                size: 24,
                               )
-                            : const Icon(EvilIcons.user, size: 34),
-                        label: "Profile",
+                            : const Icon(Icons.settings),
+                        label: "Settings",
                       ),
                     ],
                   ),

@@ -7,7 +7,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -55,12 +54,11 @@ class StaggeredTileWidget extends StatelessWidget {
                       top: 10.h,
                       child: GestureDetector(
                         onTap: onTap,
-                        child: const CircleAvatar(
+                        child: CircleAvatar(
                           backgroundColor: Kolors.kSecondaryLight,
-                          child: Icon(
-                            AntDesign.heart,
-                            color: Kolors.kRed,
-                            size: 18,
+                          child: Image.asset(
+                            "assets/images/logo.png",
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
@@ -68,36 +66,36 @@ class StaggeredTileWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 2.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      child: Text(
-                        product.title,
-                        overflow: TextOverflow.ellipsis,
-                        style: appStyle(13, Kolors.kDark, FontWeight.w600),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          AntDesign.star,
-                          color: Kolors.kGold,
-                          size: 14,
-                        ),
-                        SizedBox(width: 5.w),
-                        ReusableText(
-                          text: product.ratings.toStringAsFixed(1),
-                          style: appStyle(13, Kolors.kGray, FontWeight.normal),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 2.h),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       SizedBox(
+              //         width: MediaQuery.of(context).size.width * 0.3,
+              //         child: Text(
+              //           product.title,
+              //           overflow: TextOverflow.ellipsis,
+              //           style: appStyle(13, Kolors.kDark, FontWeight.w600),
+              //         ),
+              //       ),
+              //       Row(
+              //         children: [
+              //           const Icon(
+              //             AntDesign.star,
+              //             color: Kolors.kGold,
+              //             size: 14,
+              //           ),
+              //           SizedBox(width: 5.w),
+              //           ReusableText(
+              //             text: product.ratings.toStringAsFixed(1),
+              //             style: appStyle(13, Kolors.kGray, FontWeight.normal),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w),
                 child: ReusableText(
